@@ -1,0 +1,19 @@
+{
+    "name": "web3-util",
+    "description": "web3.js with additional utilities",
+    "version": "0.1.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MrEconomical/web3-util.git"
+    },
+    "keywords": [
+        "ethereum",
+        "web3"
+    ],
+    "author": "MrEconomical",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "web3": "^1.7.1"
+    }
+}
