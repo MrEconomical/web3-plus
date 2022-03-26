@@ -1,11 +1,11 @@
 {
-    "name": "web3-util",
+    "name": "web3-p",
     "description": "web3.js with additional utilities",
     "version": "0.1.0",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/MrEconomical/web3-util.git"
+        "url": "https://github.com/MrEconomical/web3-plus.git"
     },
     "keywords": [
         "ethereum",
