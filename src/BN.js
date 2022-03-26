@@ -38,4 +38,7 @@ BN.prototype.pown = function(num) {
     return this.pow(new BN(num))
 }
 
-module.exports = (...params) => new BN(...params)
+module.exports = {
+    _BN: BN,
+    BN: (...params) => new BN(...params)
+}
