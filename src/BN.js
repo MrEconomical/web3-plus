@@ -1,67 +1,19 @@
 const Web3Utils = require("web3-utils")
-const BigNumber = Web3Utils.BN
+const BN = Web3Utils.BN
 
-class _BN extends BigNumber {
-
-    add(num) {
-        if (BigNumber.isBN(num)) {
-            return super.add(num)
-        }
-        return super.add(new BigNumber(num))
-    }
-
-    sub(num) {
-        if (BigNumber.isBN(num)) {
-            return super.sub(num)
-        }
-        return super.sub(new BigNumber(num))
-    }
-
-    mul(num) {
-        if (BigNumber.isBN(num)) {
-            return super.mul(num)
-        }
-        return super.mul(new BigNumber(num))
-    }
-
-    pow(num) {
-        if (BigNumber.isBN(num)) {
-            return super.pow(num)
-        }
-        return super.pow(new BigNumber(num))
-    }
-
-    div(num) {
-        if (BigNumber.isBN(num)) {
-            return super.div(num)
-        }
-        return super.div(new BigNumber(num))
-    }
-
-    mod(num) {
-        if (BigNumber.isBN(num)) {
-            return super.mod(num)
-        }
-        return super.mod(new BigNumber(num))
-    }
-
-    divmod(num) {
-        if (BigNumber.isBN(num)) {
-            return super.divmod(num)
-        }
-        return super.divmod(new BigNumber(num))
-    }
-
-    divRound(num) {
-        if (BigNumber.isBN(num)) {
-            return super.divRound(num)
-        }
-        return super.divRound(new BigNumber(num))
-    }
-
+function assert(val, msg) {
+    if (!val) throw new Error(msg || "Assertion failed")
 }
 
-module.exports = {
-    _BN,
-    BN: (...params) => new _BN(...params)
+BN.prototype.toParsed = function(decimals = 18) {
+    const padded = this.toString(10, decimals + 1)
+    const parsed = `${padded.slice(0, -decimals)}.${padded.slice(-decimals)}`.replace(/0+$/g, "")
+    return parsed.endsWith(".") ? parsed.slice(0, -1) : parsed
 }
+
+BN.prototype.pown = function(num) {
+    assert(typeof num === "number")
+    return this.pow(new BN(num))
+}
+
+module.exports = (...params) => new BN(...params)
