@@ -3,12 +3,6 @@
 const Web3Utils = require("web3-utils")
 const BN = Web3Utils.BN
 
-// Assert error
-
-function assert(val, msg) {
-    if (!val) throw new Error(msg || "Assertion failed")
-}
-
 /*
  * Utilities
  */
@@ -16,9 +10,9 @@ function assert(val, msg) {
 // Convert BigNumber to number string
 
 BN.prototype.toParsed = function(decimals = 18) {
-    const padded = this.toString().padStart(decimals + 1, "0")
+    const padded = (this.isNeg() ? this.neg() : this).toString().padStart(decimals + 1, "0")
     const parsed = `${padded.slice(0, -decimals)}.${padded.slice(-decimals)}`.replace(/0+$/g, "")
-    return parsed.endsWith(".") ? parsed.slice(0, -1) : parsed
+    return `${this.isNeg() ? "-" : ""}${parsed.endsWith(".") ? parsed.slice(0, -1) : parsed}`
 }
 
 // Convert BigNumber to fixed precision number string
@@ -51,11 +45,28 @@ BN.unparse = function(num, decimals = 18) {
  * Arithmetics
  */
 
+// Multiply number by integer (fixed for negative)
+
+BN.prototype.muln = function(num) {
+    if (num < 0) {
+        return this.clone().imuln(-num).neg()
+    }
+    return this.clone().imuln(num)
+}
+
 // Raise number to an integer power
 
 BN.prototype.pown = function(num) {
-    assert(typeof num === "number")
     return this.pow(new BN(num))
+}
+
+// Divide number by integer (fixed for negative)
+
+BN.prototype.divn = function(num) {
+    if (num < 0) {
+        return this.clone().idivn(-num).neg()
+    }
+    return this.clone().idivn(num)
 }
 
 // Multiply number by 10 to the power of BN `deg`
