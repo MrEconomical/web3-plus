@@ -34,7 +34,7 @@ class Account {
     // Update account nonce
 
     async updateNonce() {
-        this.nonce = await web3.eth.getTransactionCount(this.address)
+        this.nonce = await this.web3.eth.getTransactionCount(this.address)
     }
 }
 
