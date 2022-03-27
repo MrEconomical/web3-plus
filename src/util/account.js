@@ -1,4 +1,4 @@
-// Account utils
+// Account util class
 
 class Account {
     // Copy Web3 account properties to instance
