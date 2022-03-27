@@ -45,7 +45,7 @@ class Web3Plus extends Web3 {
 // Export BN and class
 
 module.exports = {
+    Web3Plus,
     _BN,
-    BN,
-    Web3Plus
+    BN
 }
