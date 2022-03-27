@@ -78,7 +78,19 @@ BN.prototype.e = function(deg) {
 // Multiply number by 10 to the power of integer `deg`
 
 BN.prototype.en = function(deg) {
-    return this.mul(new BN(10).pown(deg))
+    return this.mul(new BN(10).pow(new BN(deg)))
+}
+
+// Divide number by 10 to the power of BN `deg`
+
+BN.prototype.ne = function(deg) {
+    return this.div(new BN(10).pow(deg))
+}
+
+// Divide number by 10 to the power of integer `deg`
+
+BN.prototype.nen = function(deg) {
+    return this.div(new BN(10).pow(new BN(deg)))
 }
 
 // Export class and constructor function
