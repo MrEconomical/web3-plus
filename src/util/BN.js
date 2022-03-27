@@ -58,6 +58,18 @@ BN.prototype.pown = function(num) {
     return this.pow(new BN(num))
 }
 
+// Multiply number by 10 to the power of BN `deg`
+
+BN.prototype.e = function(deg) {
+    return this.mul(new BN(10).pow(deg))
+}
+
+// Multiply number by 10 to the power of integer `deg`
+
+BN.prototype.en = function(deg) {
+    return this.mul(new BN(10).pown(deg))
+}
+
 // Export class and constructor function
 
 module.exports = {
