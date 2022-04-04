@@ -1,3 +1,7 @@
+// Ethereum utils
+
+const { BN } = require("./util/BN.js")
+
 // Wait for transaction confirmation
 
 function pollTransaction(hash) {
