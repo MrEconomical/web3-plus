@@ -1,7 +1,6 @@
 // BigNumber utils
 
-const Web3Utils = require("web3-utils")
-const BN = Web3Utils.BN
+const BN = require("bn.js")
 
 /*
  * Utilities
