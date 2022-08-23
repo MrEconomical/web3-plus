@@ -10,13 +10,13 @@ A wrapper on top of web3.js with additional utilities, published to npm as `web3
 
 ## Usage
 
-```
+```js
 const { Web3Plus, BN, _BN } = require("web3-p");
 const web3 = new Web3Plus();
 ```
 
 Configure a Web3Plus instance with the `options` parameter in the constructor:
-```
+```js
 const { Web3Plus } = require("web3-p");
 const web3 = new Web3Plus(null, {
     verbose: false,     // debug logging
