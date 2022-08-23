@@ -19,9 +19,9 @@ Configure a Web3Plus instance with the `options` parameter in the constructor:
 ```js
 const { Web3Plus } = require("web3-p");
 const web3 = new Web3Plus(null, {
-    verbose: false,     // debug logging
-    disableGas: false,  // disable the gas cache update loop
-    gasInterval: 5000,  // loop time in ms of gas cache update
-    pollInterval: 1000, // poll interval of web3.eth.pollTransaction
+    verbose: false,    // debug logging
+    disableGas: false, // disable the gas cache update loop
+    gasInterval: 5000, // loop time in ms of gas cache update
+    pollInterval: 1000 // poll interval of web3.eth.pollTransaction
 });
 ```
