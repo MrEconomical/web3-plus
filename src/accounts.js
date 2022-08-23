@@ -9,7 +9,7 @@ function importAccount(privateKey) {
     return new Account(this, account)
 }
 
-// Export accounts methods
+// Export web3.eth.accounts methods
 
 module.exports = {
     importAccount

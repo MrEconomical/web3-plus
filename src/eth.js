@@ -15,7 +15,7 @@ function pollTransaction(hash) {
 
 // Update cached gas price
 
-async function _updateGas() {
+async function updateGas() {
     try {
         if (!this.currentProvider) return
         this.eth.gasPrice = BN(await this.eth.getGasPrice())
@@ -47,10 +47,10 @@ async function _pollTxs() {
     batch.execute()
 }
 
-// Export eth methods
+// Export web3.eth methods
 
 module.exports = {
     pollTransaction,
-    _updateGas,
+    updateGas,
     _pollTxs,
 }

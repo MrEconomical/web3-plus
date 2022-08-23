@@ -1,7 +1,7 @@
 // Web3 modules
 
 const Web3 = require("web3")
-const { pollTransaction, _updateGas, _pollTxs } = require("./eth.js")
+const { pollTransaction, updateGas, _pollTxs } = require("./eth.js")
 const { importAccount } = require("./accounts.js")
 const { _BN, BN } = require("./util/BN.js")
 
@@ -24,15 +24,15 @@ class Web3Plus extends Web3 {
 
         this.eth.pollTransaction = pollTransaction.bind(this)
         this.eth.accounts.importAccount = importAccount.bind(this)
-        this.eth._updateGas = _updateGas.bind(this)
+        this.eth.updateGas = updateGas.bind(this)
         this.eth._pollTxs = _pollTxs.bind(this)
 
         // Run gas price update loop
 
         if (!this.options.disableGas) {
             this.eth.gasPrice = BN(0)
-            this.eth._updateGas()
-            this._gasInterval = setInterval(this.eth._updateGas, this.options.gasInterval)
+            this.eth.updateGas()
+            this._gasInterval = setInterval(this.eth.updateGas, this.options.gasInterval)
         }
 
         // Run transaction confirmation polling interval
@@ -42,7 +42,7 @@ class Web3Plus extends Web3 {
     }
 }
 
-// Export BN and class
+// Export Web3Plus and BN utils
 
 module.exports = {
     Web3Plus,
