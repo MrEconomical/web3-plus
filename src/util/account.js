@@ -13,7 +13,7 @@ class Account {
 
     // Sign transaction from account and return raw transaction data
 
-    async signTx(params, addNonce = true) {
+    async signTx(params, addNonce) {
         return (await this.signTransaction({
             from: this.address,
             nonce: addNonce ? this.nonce ++ : this.nonce,
@@ -23,7 +23,7 @@ class Account {
 
     // Sign transaction from account and return full signature
 
-    async signTxFull(params, addNonce = true) {
+    async signTxFull(params, addNonce) {
         return await this.signTransaction({
             from: this.address,
             nonce: addNonce ? this.nonce ++ : this.nonce,
