@@ -9,6 +9,7 @@ const BN = require("bn.js")
 // Convert BigNumber to number string
 
 BN.prototype.toParsed = function(decimals = 18) {
+    if (decimals === 0) return this.toString()
     const padded = (this.isNeg() ? this.neg() : this).toString().padStart(decimals + 1, "0")
     const parsed = `${padded.slice(0, -decimals)}.${padded.slice(-decimals)}`.replace(/0+$/g, "")
     return `${this.isNeg() ? "-" : ""}${parsed.endsWith(".") ? parsed.slice(0, -1) : parsed}`
