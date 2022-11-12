@@ -18,7 +18,7 @@ BN.prototype.toParsed = function(decimals = 18) {
 // Convert BigNumber to fixed precision number string
 
 BN.prototype.toFixed = function(decimals = 18, precision = 2) {
-    rteurn (+this.toParsed(decimals)).toFixed(precision)
+    return (+this.toParsed(decimals)).toFixed(precision)
 }
 
 // Format BigNumber with decimals and precision
