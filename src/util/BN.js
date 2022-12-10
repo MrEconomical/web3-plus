@@ -41,6 +41,12 @@ BN.unparse = function(num, decimals = 18) {
     return new BN(number + "0".repeat(decimals))
 }
 
+// Convert hex string to BigNumber
+
+BN.fromHex = value => {
+    return new BN(value.startsWith("0x") ? value.slice(2) : value, 16)
+}
+
 /*
  * Arithmetics
  */
