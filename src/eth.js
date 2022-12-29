@@ -1,6 +1,17 @@
 // Imports
 
+const accounts = require("./accounts.js")
 const { BN } = require("./BN.js")
+
+// Get network id and chain id
+
+async function getParams() {
+    const [ networkId, chainId ] = await Promise.all([
+        this.eth.net.getId(),
+        this.eth.getChainId()
+    ])
+    return { networkId, chainId }
+}
 
 // Wait for transaction confirmation
 
@@ -50,7 +61,9 @@ async function _pollTxs() {
 // Export web3.eth methods
 
 module.exports = {
+    getParams,
     pollTransaction,
     updateGas,
     _pollTxs,
+    accounts
 }
