@@ -1,9 +1,9 @@
-// Web3 modules
+// Imports
 
 const Web3 = require("web3")
 const { pollTransaction, updateGas, _pollTxs } = require("./eth.js")
 const { importAccount } = require("./accounts.js")
-const { _BN, BN } = require("./util/BN.js")
+const { _BN, BN } = require("./BN.js")
 
 // Web3 plus class
 
@@ -23,9 +23,9 @@ class Web3Plus extends Web3 {
         }
 
         this.eth.pollTransaction = pollTransaction.bind(this)
-        this.eth.accounts.importAccount = importAccount.bind(this)
         this.eth.updateGas = updateGas.bind(this)
         this.eth._pollTxs = _pollTxs.bind(this)
+        this.eth.accounts.importAccount = importAccount.bind(this)
 
         // Run gas price update loop
 

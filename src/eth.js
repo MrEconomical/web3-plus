@@ -1,6 +1,6 @@
-// Ethereum utils
+// Imports
 
-const { BN } = require("./util/BN.js")
+const { BN } = require("./BN.js")
 
 // Wait for transaction confirmation
 

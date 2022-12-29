@@ -1,4 +1,4 @@
-// BigNumber utils
+// Imports
 
 const BN = require("bn.js")
 
